@@ -11,8 +11,9 @@ export const Layout = ({ children }: LayoutProps) => {
       sx={{
         display: "grid",
         backgroundColor: "#282c34",
-        minHeight: "100vh",
+        height: "calc(100vh - 24px - 24px - 64px)",
         color: "white",
+        p: 3,
       }}
     >
       {children}
