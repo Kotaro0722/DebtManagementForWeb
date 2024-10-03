@@ -15,7 +15,8 @@ export const Amount = ({ isPlus, amount }: AmountProps) => {
         borderRadius: "10px",
         display: "grid",
         width: "200px",
-        marginX: "auto",
+        mx: "auto",
+        py: 1,
       }}
     >
       <Box
