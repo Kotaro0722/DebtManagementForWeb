@@ -24,7 +24,7 @@ type AmountTableProps = {
   title: string;
   isPlus: boolean;
   amount: number;
-  list: ListType[];
+  list: ListType[] | null;
   detailLink: string;
 };
 
@@ -43,7 +43,6 @@ export const AmountTable = ({
         display: "flex",
         flexDirection: "column",
         padding: "30px",
-        gap: "20px",
       }}
     >
       <Typography
@@ -79,7 +78,7 @@ export const AmountTable = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {list.map((item) => {
+            {list?.map((item) => {
               return (
                 <StripeTableRow>
                   <StyledTableCell align="center">{item.name}</StyledTableCell>
@@ -98,6 +97,7 @@ export const AmountTable = ({
           backgroundColor: theme.palette.primary.dark,
           color: "white",
           borderRadius: "10px",
+          mt: "15px",
         }}
         disableRipple
       >
