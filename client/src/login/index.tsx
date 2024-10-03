@@ -22,7 +22,7 @@ export const Login = () => {
           fontWeight: "bold",
           width: "200px",
         }}
-        href="https://discord.com/oauth2/authorize?client_id=1287592892390707230&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fmain&scope=identify"
+        href="https://discord.com/oauth2/authorize?client_id=1287592892390707230&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&scope=identify"
       >
         Login
       </Button>
