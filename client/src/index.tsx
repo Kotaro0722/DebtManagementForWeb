@@ -12,6 +12,7 @@ export const theme = createTheme({
   palette: {
     primary: {
       main: "#303030",
+      dark: "#2C2C2C",
     },
     secondary: {
       main: "#B2B2B2",
@@ -21,7 +22,7 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Arial",
+    fontFamily: "Inter",
   },
 });
 
@@ -39,7 +40,7 @@ root.render(
             <Header />
             <Layout>
               <Routes>
-                <Route path="/Dashboard" element={<Dashboard />} />
+                <Route path="/dashboard" element={<Dashboard />} />
               </Routes>
             </Layout>
           </ThemeProvider>
