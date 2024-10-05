@@ -27,7 +27,7 @@ export const HistoryTable = ({ list }: HistoryTableProps) => {
     <TableContainer component={Paper} sx={{ width: "80%" }}>
       <Table>
         <TableHead>
-          <TableRow>
+          <TableRow sx={{ display: "flex" }}>
             <StyledTableCell align="center">Amount</StyledTableCell>
             <StyledTableCell align="center">Post Date</StyledTableCell>
             <StyledTableCell align="center">Detail</StyledTableCell>
@@ -71,6 +71,7 @@ export const HistoryTable = ({ list }: HistoryTableProps) => {
 };
 
 const StripeTableRow = styled(TableRow)(({ theme }) => ({
+  display: "flex",
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
@@ -81,5 +82,6 @@ const StripeTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  flex: 1,
   fontSize: "20px",
 }));

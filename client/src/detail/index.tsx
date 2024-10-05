@@ -14,17 +14,21 @@ import { useEffect, useState } from "react";
 import { Amount } from "../components/amount";
 import { theme } from "..";
 import { HistoryListType, HistoryTable } from "../components/historyTable";
+import { useLocation } from "react-router-dom";
 
 type DetailProps = {
   title: string;
 };
 
 export const Detail = ({ title }: DetailProps) => {
+  const [isPlus, setIsPlus] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(0);
-  const [history, setHistory] = useState<HistoryListType[] | null>(null);
-  const [detailOption, setDetailOption] = useState<string[] | null>(null);
   const [detail, setDetail] = useState<string>("");
+  const [detailOption, setDetailOption] = useState<string[] | null>(null);
   const [isOnlyUnpaid, setIsOnlyUnpaid] = useState<boolean>(false);
+  const [history, setHistory] = useState<HistoryListType[] | null>(null);
+
+  const location = useLocation();
 
   const handleChange = (event: SelectChangeEvent) => {
     setDetail(event.target.value as string);
@@ -34,7 +38,10 @@ export const Detail = ({ title }: DetailProps) => {
   };
 
   useEffect(() => {
+    setIsPlus(location.pathname === "/credit" || location.pathname !== "/debt");
+
     setDetailOption(["田中太郎", "佐藤次郎"]);
+
     setHistory([
       { amount: 100, createdAt: new Date(), detail: "テンホウ", paid: false },
       { amount: 200, createdAt: new Date(), detail: "大将", paid: true },
@@ -49,7 +56,7 @@ export const Detail = ({ title }: DetailProps) => {
   return (
     <Grid2 container wrap="nowrap" direction="column" rowSpacing={4}>
       <Grid2 size={12}>
-        <Amount isPlus amount={amount} title={title} />
+        <Amount isPlus={isPlus} amount={amount} title={title} />
       </Grid2>
       <Grid2 size={12}>
         <Paper
