@@ -6,9 +6,10 @@ import CurrencyYenRoundedIcon from "@mui/icons-material/CurrencyYenRounded";
 export type AmountProps = {
   isPlus: boolean;
   amount: number;
+  title?: string;
 };
 
-export const Amount = ({ isPlus, amount }: AmountProps) => {
+export const Amount = ({ isPlus, amount, title }: AmountProps) => {
   return (
     <Paper
       sx={{
@@ -23,11 +24,13 @@ export const Amount = ({ isPlus, amount }: AmountProps) => {
         sx={{
           width: "fit-content",
           marginX: "auto",
-          fontSize: "50px",
-          color: isPlus ? "#34C759" : "#FF3B30",
+          fontSize: title ? "20px" : "50px",
+          color: title ? "black" : isPlus ? "#34C759" : "#FF3B30",
         }}
       >
-        {isPlus ? (
+        {title ? (
+          title
+        ) : isPlus ? (
           <GppGoodIcon fontSize="inherit" />
         ) : (
           <ErrorIcon fontSize="inherit" />

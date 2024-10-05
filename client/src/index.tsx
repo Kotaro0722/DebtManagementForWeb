@@ -7,12 +7,14 @@ import { Dashboard } from "./dashboard";
 import { Header } from "./header";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Layout } from "./layout";
+import { Detail } from "./detail";
 
 export const theme = createTheme({
   palette: {
     primary: {
       main: "#303030",
       dark: "#2C2C2C",
+      light: "#B3B3B3",
     },
     secondary: {
       main: "#B2B2B2",
@@ -41,6 +43,15 @@ root.render(
             <Layout>
               <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
+              </Routes>
+              <Routes>
+                <Route path="/credit" element={<Detail title="Credit" />} />
+              </Routes>
+              <Routes>
+                <Route path="/total" element={<Detail title="Total" />} />
+              </Routes>
+              <Routes>
+                <Route path="/debt" element={<Detail title="Debt" />} />
               </Routes>
             </Layout>
           </ThemeProvider>
