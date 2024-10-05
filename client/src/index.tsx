@@ -8,6 +8,7 @@ import { Header } from "./header";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Layout } from "./layout";
 import { Detail } from "./detail";
+import { NewCredit } from "./newCredit";
 
 export const theme = createTheme({
   palette: {
@@ -52,6 +53,9 @@ root.render(
               </Routes>
               <Routes>
                 <Route path="/debt" element={<Detail title="Debt" />} />
+              </Routes>
+              <Routes>
+                <Route path="/newCredit" element={<NewCredit />} />
               </Routes>
             </Layout>
           </ThemeProvider>
