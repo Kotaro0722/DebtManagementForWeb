@@ -15,22 +15,26 @@ import { Amount } from "../components/amount";
 import { theme } from "..";
 import { HistoryListType, HistoryTable } from "../components/historyTable";
 
-export const Credit = () => {
+type DetailProps = {
+  title: string;
+};
+
+export const Detail = ({ title }: DetailProps) => {
   const [amount, setAmount] = useState<number>(0);
   const [history, setHistory] = useState<HistoryListType[] | null>(null);
-  const [debtorOption, setDebtorOption] = useState<string[] | null>(null);
-  const [debtor, setDebtor] = useState<string>("");
+  const [detailOption, setDetailOption] = useState<string[] | null>(null);
+  const [detail, setDetail] = useState<string>("");
   const [isOnlyUnpaid, setIsOnlyUnpaid] = useState<boolean>(false);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setDebtor(event.target.value as string);
+    setDetail(event.target.value as string);
   };
   const handleOnChangeUnpaid = () => {
     setIsOnlyUnpaid((prevState) => !prevState);
   };
 
   useEffect(() => {
-    setDebtorOption(["田中太郎", "佐藤次郎"]);
+    setDetailOption(["田中太郎", "佐藤次郎"]);
     setHistory([
       { amount: 100, createdAt: new Date(), detail: "テンホウ", paid: false },
       { amount: 200, createdAt: new Date(), detail: "大将", paid: true },
@@ -45,7 +49,7 @@ export const Credit = () => {
   return (
     <Grid2 container wrap="nowrap" direction="column" rowSpacing={4}>
       <Grid2 size={12}>
-        <Amount isPlus amount={amount} />
+        <Amount isPlus amount={amount} title={title} />
       </Grid2>
       <Grid2 size={12}>
         <Paper
@@ -62,12 +66,12 @@ export const Credit = () => {
         >
           <Grid2 container columnSpacing={5}>
             <FormControl fullWidth sx={{ width: "200px" }}>
-              <InputLabel id="demo-simple-select-label">Debtor</InputLabel>
+              <InputLabel id="demo-simple-select-label">{title}</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={debtor}
-                label="Debtor"
+                value={detail}
+                label="Detail"
                 onChange={handleChange}
                 sx={{
                   backgroundColor: "white",
@@ -75,10 +79,10 @@ export const Credit = () => {
                 }}
               >
                 <MenuItem value="all">all</MenuItem>
-                {debtorOption?.map((debtor, index) => {
+                {detailOption?.map((detail, index) => {
                   return (
-                    <MenuItem value={debtor} key={index}>
-                      {debtor}
+                    <MenuItem value={detail} key={index}>
+                      {detail}
                     </MenuItem>
                   );
                 })}
