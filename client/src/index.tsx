@@ -7,7 +7,7 @@ import { Dashboard } from "./dashboard";
 import { Header } from "./header";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Layout } from "./layout";
-import { Credit } from "./credit";
+import { Detail } from "./detail";
 
 export const theme = createTheme({
   palette: {
@@ -45,7 +45,13 @@ root.render(
                 <Route path="/dashboard" element={<Dashboard />} />
               </Routes>
               <Routes>
-                <Route path="/credit" element={<Credit />} />
+                <Route path="/credit" element={<Detail title="Credit" />} />
+              </Routes>
+              <Routes>
+                <Route path="/total" element={<Detail title="Total" />} />
+              </Routes>
+              <Routes>
+                <Route path="/debt" element={<Detail title="Debt" />} />
               </Routes>
             </Layout>
           </ThemeProvider>
