@@ -32,6 +32,7 @@ const schema = z.object({
     }),
   message: z.string().optional(),
 });
+
 type FormSchema = z.infer<typeof schema>;
 
 export const NewCredit = () => {
@@ -146,7 +147,7 @@ export const NewCredit = () => {
   );
 };
 
-const LabelTypography = styled(Typography)(({ theme }) => ({
+export const LabelTypography = styled(Typography)(({ theme }) => ({
   fontSize: "20px",
   borderBottom: `1px solid ${theme.palette.primary.dark}`,
   marginBottom: "10px",
