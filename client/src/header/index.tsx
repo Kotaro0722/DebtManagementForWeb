@@ -7,14 +7,19 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
-  const [value, setValue] = useState<string>("Dashboard");
+  const [value, setValue] = useState<string>("dashboard");
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+  const navigate = useNavigate();
+
+  const handleTabChange = (event: SyntheticEvent, newValue: string) => {
     setValue(newValue);
+    navigate(newValue);
   };
+
   return (
     <AppBar position="static">
       <Toolbar
@@ -34,11 +39,11 @@ export const Header = () => {
           indicatorColor="primary"
           aria-label="navigation tab"
         >
-          <NavigationTab value="Dashboard" label="Dashboard" disableRipple />
-          <NavigationTab value="Credit" label="Credit" disableRipple />
-          <NavigationTab value="Debt" label="Debt" disableRipple />
-          <NavigationTab value="Total" label="Total" disableRipple />
-          <NavigationTab value="NewCredit" label="New Credit" disableRipple />
+          <NavigationTab value="dashboard" label="Dashboard" disableRipple />
+          <NavigationTab value="debt" label="Debt" disableRipple />
+          <NavigationTab value="total" label="Total" disableRipple />
+          <NavigationTab value="credit" label="Credit" disableRipple />
+          <NavigationTab value="newCredit" label="New Credit" disableRipple />
           <NavigationTab
             value="ConfirmPayment"
             label="Confirm Payment"
