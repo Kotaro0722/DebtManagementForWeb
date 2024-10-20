@@ -99,6 +99,14 @@ export const Detail = ({ title }: DetailProps) => {
         paid: true,
         isCredit: true,
       },
+      {
+        name: "佐藤次郎",
+        amount: 200,
+        createdAt: new Date(),
+        message: "大将",
+        paid: true,
+        isCredit: true,
+      },
     ]);
   }, []);
 
@@ -154,7 +162,16 @@ export const Detail = ({ title }: DetailProps) => {
               label="Only Unpaid"
             />
           </Grid2>
-          <HistoryTable list={history} />
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <HistoryTable list={history} />
+          </Box>
         </Paper>
       </Grid2>
       <Grid2 size={12}></Grid2>

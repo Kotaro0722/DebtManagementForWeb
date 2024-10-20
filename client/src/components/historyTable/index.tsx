@@ -94,10 +94,10 @@ export const HistoryTable = ({ list }: HistoryTableProps) => {
         </Table>
         <Box
           sx={{
-            maxHeight:
-              "calc(100vh - 64px - 24px  - 150px - 32px - 16px - 65px - 24px - 57px - 24px - 24px)",
+            // maxHeight:
+            //   "calc(100vh - 64px - 24px  - 150px - 32px - 16px - 65px - 24px - 57px - 24px - 24px)",
             overflowY: "scroll",
-            //   maxHeight: "430px",
+            height: "100%",
           }}
         >
           <Table>
@@ -278,4 +278,5 @@ const StripeTableRow = styled(TableRow)(({ theme }) => ({
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   flex: 1,
   fontSize: "20px",
+  whiteSpace: "nowrap",
 }));
