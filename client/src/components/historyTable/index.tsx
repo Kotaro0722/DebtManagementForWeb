@@ -32,11 +32,11 @@ export type HistoryListType = {
   createdAt: Date;
   message: string;
   paid: boolean;
+  isCredit: boolean;
 };
 
 type HistoryTableProps = {
   list: HistoryListType[] | null;
-  isEditable?: boolean;
 };
 
 const schema = z.object({
@@ -59,7 +59,7 @@ const schema = z.object({
 
 type FormSchema = z.infer<typeof schema>;
 
-export const HistoryTable = ({ list, isEditable }: HistoryTableProps) => {
+export const HistoryTable = ({ list }: HistoryTableProps) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const [billingOption, setBillingOption] = useState<string[]>([
@@ -106,9 +106,9 @@ export const HistoryTable = ({ list, isEditable }: HistoryTableProps) => {
                 return (
                   <StripeTableRow
                     key={index}
-                    sx={{ cursor: isEditable ? "pointer" : "default" }}
+                    sx={{ cursor: item.isCredit ? "pointer" : "default" }}
                     onClick={() => {
-                      if (isEditable) {
+                      if (item.isCredit) {
                         setIsModalOpen(true);
                         setValue("billing", item.name);
                         setValue("amount", item.amount.toString());

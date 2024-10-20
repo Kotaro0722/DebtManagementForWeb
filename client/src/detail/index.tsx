@@ -49,6 +49,7 @@ export const Detail = ({ title }: DetailProps) => {
         createdAt: new Date(),
         message: "テンホウ",
         paid: false,
+        isCredit: true,
       },
       {
         name: "田中太郎",
@@ -56,6 +57,7 @@ export const Detail = ({ title }: DetailProps) => {
         createdAt: new Date(),
         message: "大将",
         paid: true,
+        isCredit: true,
       },
       {
         name: "田中太郎",
@@ -63,6 +65,7 @@ export const Detail = ({ title }: DetailProps) => {
         createdAt: new Date(),
         message: "大将",
         paid: true,
+        isCredit: true,
       },
       {
         name: "佐藤次郎",
@@ -70,6 +73,7 @@ export const Detail = ({ title }: DetailProps) => {
         createdAt: new Date(),
         message: "大将",
         paid: true,
+        isCredit: true,
       },
       {
         name: "佐藤次郎",
@@ -77,6 +81,7 @@ export const Detail = ({ title }: DetailProps) => {
         createdAt: new Date(),
         message: "大将",
         paid: true,
+        isCredit: true,
       },
       {
         name: "佐藤次郎",
@@ -84,6 +89,7 @@ export const Detail = ({ title }: DetailProps) => {
         createdAt: new Date(),
         message: "大将",
         paid: true,
+        isCredit: true,
       },
       {
         name: "佐藤次郎",
@@ -91,6 +97,7 @@ export const Detail = ({ title }: DetailProps) => {
         createdAt: new Date(),
         message: "大将",
         paid: true,
+        isCredit: true,
       },
     ]);
   }, []);
@@ -147,10 +154,7 @@ export const Detail = ({ title }: DetailProps) => {
               label="Only Unpaid"
             />
           </Grid2>
-          <HistoryTable
-            list={history}
-            isEditable={location.pathname === "/credit"}
-          />
+          <HistoryTable list={history} />
         </Paper>
       </Grid2>
       <Grid2 size={12}></Grid2>
