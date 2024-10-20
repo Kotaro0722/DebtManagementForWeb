@@ -45,7 +45,7 @@ export const Header = () => {
           <NavigationTab value="credit" label="Credit" disableRipple />
           <NavigationTab value="newCredit" label="New Credit" disableRipple />
           <NavigationTab
-            value="ConfirmPayment"
+            value="confirmPayment"
             label="Confirm Payment"
             disableRipple
           />
