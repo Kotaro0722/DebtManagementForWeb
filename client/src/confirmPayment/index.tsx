@@ -131,14 +131,27 @@ export const ConfirmPayment = () => {
         paid: true,
         isCredit: true,
       },
+      {
+        name: "佐藤次郎",
+        amount: 200,
+        createdAt: new Date(),
+        message: "大将",
+        paid: true,
+        isCredit: true,
+      },
     ]);
     setTargetOption(["田中太郎", "佐藤次郎"]);
   }, []);
 
   return (
     <Grid2 container columnSpacing={2}>
-      <Grid2 container size={6} component="div" sx={{ maxHeight: "800px" }}>
-        <HistoryTable list={history} />
+      <Grid2
+        container
+        size={6}
+        component="div"
+        sx={{ maxHeight: "800px", overflowY: "visible" }}
+      >
+        <HistoryTable list={history} height="800px" />
       </Grid2>
       <Grid2 container size={6} justifyContent="center" alignItems="center">
         <Paper

@@ -38,6 +38,7 @@ export type HistoryListType = {
 type HistoryTableProps = {
   list: HistoryListType[] | null;
   width?: string;
+  height?: string;
 };
 
 const schema = z.object({
@@ -60,7 +61,11 @@ const schema = z.object({
 
 type FormSchema = z.infer<typeof schema>;
 
-export const HistoryTable = ({ list, width = "100%" }: HistoryTableProps) => {
+export const HistoryTable = ({
+  list,
+  width = "100%",
+  height = "100%",
+}: HistoryTableProps) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const [billingOption, setBillingOption] = useState<string[]>([
@@ -81,7 +86,10 @@ export const HistoryTable = ({ list, width = "100%" }: HistoryTableProps) => {
 
   return (
     <>
-      <TableContainer component={Paper} sx={{ width: width }}>
+      <TableContainer
+        component={Paper}
+        sx={{ width, height, overflow: "hidden" }}
+      >
         <Table>
           <TableHead>
             <TableRow sx={{ display: "flex" }}>
@@ -93,14 +101,14 @@ export const HistoryTable = ({ list, width = "100%" }: HistoryTableProps) => {
             </TableRow>
           </TableHead>
         </Table>
+
+        {/* Box内のみスクロールさせるためにheightを固定 */}
         <Box
           sx={{
-            // maxHeight:
-            //   "calc(100vh - 64px - 24px  - 150px - 32px - 16px - 65px - 24px - 57px - 24px - 24px)",
             overflowX: "visible",
             overflowY: "scroll",
             width: "100%",
-            // height: "100%",
+            maxHeight: "calc(" + height + " - 57px)", // または必要な高さを指定
           }}
         >
           <Table>
@@ -142,6 +150,7 @@ export const HistoryTable = ({ list, width = "100%" }: HistoryTableProps) => {
           </Table>
         </Box>
       </TableContainer>
+
       <Modal
         open={isModalOpen}
         onClose={() => {
