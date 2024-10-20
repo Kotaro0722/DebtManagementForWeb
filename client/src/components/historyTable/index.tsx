@@ -37,6 +37,7 @@ export type HistoryListType = {
 
 type HistoryTableProps = {
   list: HistoryListType[] | null;
+  width?: string;
 };
 
 const schema = z.object({
@@ -59,7 +60,7 @@ const schema = z.object({
 
 type FormSchema = z.infer<typeof schema>;
 
-export const HistoryTable = ({ list }: HistoryTableProps) => {
+export const HistoryTable = ({ list, width = "100%" }: HistoryTableProps) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const [billingOption, setBillingOption] = useState<string[]>([
@@ -80,7 +81,7 @@ export const HistoryTable = ({ list }: HistoryTableProps) => {
 
   return (
     <>
-      <TableContainer component={Paper} sx={{ width: "80%" }}>
+      <TableContainer component={Paper} sx={{ width: width }}>
         <Table>
           <TableHead>
             <TableRow sx={{ display: "flex" }}>
@@ -96,8 +97,10 @@ export const HistoryTable = ({ list }: HistoryTableProps) => {
           sx={{
             // maxHeight:
             //   "calc(100vh - 64px - 24px  - 150px - 32px - 16px - 65px - 24px - 57px - 24px - 24px)",
+            overflowX: "visible",
             overflowY: "scroll",
-            height: "100%",
+            width: "100%",
+            // height: "100%",
           }}
         >
           <Table>

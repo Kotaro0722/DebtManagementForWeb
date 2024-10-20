@@ -170,7 +170,7 @@ export const Detail = ({ title }: DetailProps) => {
               alignItems: "center",
             }}
           >
-            <HistoryTable list={history} />
+            <HistoryTable list={history} width="80%" />
           </Box>
         </Paper>
       </Grid2>
