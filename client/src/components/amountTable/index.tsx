@@ -78,9 +78,9 @@ export const AmountTable = ({
             </TableRow>
           </TableHead>
           <TableBody>
-            {list?.map((item) => {
+            {list?.map((item, index) => {
               return (
-                <StripeTableRow>
+                <StripeTableRow key={index}>
                   <StyledTableCell align="center">{item.name}</StyledTableCell>
                   <StyledTableCell align="center">
                     {item.amount}

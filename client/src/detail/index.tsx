@@ -23,7 +23,7 @@ type DetailProps = {
 export const Detail = ({ title }: DetailProps) => {
   const [isPlus, setIsPlus] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(0);
-  const [detail, setDetail] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const [detailOption, setDetailOption] = useState<string[] | null>(null);
   const [isOnlyUnpaid, setIsOnlyUnpaid] = useState<boolean>(false);
   const [history, setHistory] = useState<HistoryListType[] | null>(null);
@@ -31,7 +31,7 @@ export const Detail = ({ title }: DetailProps) => {
   const location = useLocation();
 
   const handleChange = (event: SelectChangeEvent) => {
-    setDetail(event.target.value as string);
+    setMessage(event.target.value as string);
   };
   const handleOnChangeUnpaid = () => {
     setIsOnlyUnpaid((prevState) => !prevState);
@@ -43,13 +43,70 @@ export const Detail = ({ title }: DetailProps) => {
     setDetailOption(["田中太郎", "佐藤次郎"]);
 
     setHistory([
-      { amount: 100, createdAt: new Date(), detail: "テンホウ", paid: false },
-      { amount: 200, createdAt: new Date(), detail: "大将", paid: true },
-      { amount: 200, createdAt: new Date(), detail: "大将", paid: true },
-      { amount: 200, createdAt: new Date(), detail: "大将", paid: true },
-      { amount: 200, createdAt: new Date(), detail: "大将", paid: true },
-      { amount: 200, createdAt: new Date(), detail: "大将", paid: true },
-      { amount: 200, createdAt: new Date(), detail: "大将", paid: true },
+      {
+        name: "田中太郎",
+        amount: 100,
+        createdAt: new Date(),
+        message: "テンホウ",
+        paid: false,
+        isCredit: true,
+      },
+      {
+        name: "田中太郎",
+        amount: 200,
+        createdAt: new Date(),
+        message: "大将",
+        paid: true,
+        isCredit: true,
+      },
+      {
+        name: "田中太郎",
+        amount: 200,
+        createdAt: new Date(),
+        message: "大将",
+        paid: true,
+        isCredit: true,
+      },
+      {
+        name: "佐藤次郎",
+        amount: 200,
+        createdAt: new Date(),
+        message: "大将",
+        paid: true,
+        isCredit: true,
+      },
+      {
+        name: "佐藤次郎",
+        amount: 200,
+        createdAt: new Date(),
+        message: "大将",
+        paid: true,
+        isCredit: true,
+      },
+      {
+        name: "佐藤次郎",
+        amount: 200,
+        createdAt: new Date(),
+        message: "大将",
+        paid: true,
+        isCredit: true,
+      },
+      {
+        name: "佐藤次郎",
+        amount: 200,
+        createdAt: new Date(),
+        message: "大将",
+        paid: true,
+        isCredit: true,
+      },
+      {
+        name: "佐藤次郎",
+        amount: 200,
+        createdAt: new Date(),
+        message: "大将",
+        paid: true,
+        isCredit: true,
+      },
     ]);
   }, []);
 
@@ -77,7 +134,7 @@ export const Detail = ({ title }: DetailProps) => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={detail}
+                value={message}
                 label="Detail"
                 onChange={handleChange}
                 sx={{
@@ -86,10 +143,10 @@ export const Detail = ({ title }: DetailProps) => {
                 }}
               >
                 <MenuItem value="all">all</MenuItem>
-                {detailOption?.map((detail, index) => {
+                {detailOption?.map((message, index) => {
                   return (
-                    <MenuItem value={detail} key={index}>
-                      {detail}
+                    <MenuItem value={message} key={index}>
+                      {message}
                     </MenuItem>
                   );
                 })}
@@ -105,7 +162,16 @@ export const Detail = ({ title }: DetailProps) => {
               label="Only Unpaid"
             />
           </Grid2>
-          <HistoryTable list={history} />
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <HistoryTable list={history} width="80%" />
+          </Box>
         </Paper>
       </Grid2>
       <Grid2 size={12}></Grid2>
