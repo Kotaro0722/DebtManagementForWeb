@@ -11,6 +11,7 @@ import {
   Select,
   SelectChangeEvent,
   Stack,
+  TextField,
 } from "@mui/material";
 import { HistoryListType, HistoryTable } from "../components/historyTable";
 import { useEffect, useState } from "react";
@@ -211,6 +212,13 @@ export const ConfirmPayment = () => {
             </FormControl>
           </Stack>
           <Amount isPlus={isPlus} amount={amount} title="Amount" />
+          {operation == "partial" && (
+            <TextField
+              required
+              sx={{ backgroundColor: "white", borderRadius: "4px" }}
+              placeholder="Amount"
+            />
+          )}
           <Button
             type="submit"
             sx={{
