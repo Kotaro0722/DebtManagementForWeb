@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/debt
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:latest
+    container_name: mariadb_container
+    environment:
+      MARIADB_DATABASE: debt_database
+      MARIADB_ROOT_PASSWORD: debt_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:

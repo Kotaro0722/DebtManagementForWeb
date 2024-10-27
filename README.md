@@ -64,3 +64,14 @@
 ```
 yarn start
 ```
+
+## バックエンド
+
+### データベース
+
+- mariadb を使用
+
+### Django SuperUser
+
+- user:root
+- password:debt_pass
