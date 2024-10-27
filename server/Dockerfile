@@ -1,11 +1,11 @@
-FROM python:3.9
+FROM python:3.12
 
-WORKDIR /app
+WORKDIR /debt
 
-COPY requirements.txt /app/
-RUN pip install --no-chache-dir -r requirements.txt
+COPY requirements.txt /debt/
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /app/
+COPY . /debt/
 
 EXPOSE 8000
 
