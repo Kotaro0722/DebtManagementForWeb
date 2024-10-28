@@ -67,9 +67,24 @@ yarn start
 
 ## バックエンド
 
+### 環境構築
+
+```
+docker compose build
+```
+
+```
+docker compose up
+```
+
 ### データベース
 
 - mariadb を使用
+
+### API ドキュメント
+
+`document/api-document.yml`を開いた状態で
+`OpenAPI:show preview using the default renderer`を使用
 
 ### Django SuperUser
 
