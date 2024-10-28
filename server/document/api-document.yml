@@ -1,0 +1,45 @@
+openapi: "3.0.0"
+info:
+  title: WebDebt API
+  version: "1.0"
+servers:
+  - url: https://localhost:8000/api/
+paths:
+  /member:
+    get:
+      summary: "メンバーを一覧で取得する"
+      responses:
+        "200":
+          description: "成功時のレスポンス"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: "string"
+                    example: "kotaro"
+                  discord_id:
+                    type: "string"
+                    example: "960825958208765973"
+
+    post:
+      summary: "メンバーを登録する"
+      description: "ログインした際に未登録の場合のみ"
+      responses:
+        "200":
+          description: "成功時のレスポンス"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: "string"
+                    example: "kotaro"
+                  discord_id:
+                    type: "string"
+                    example: "960825958208765973"
+                  login_id:
+                    type: "string"
+                    example: ""
