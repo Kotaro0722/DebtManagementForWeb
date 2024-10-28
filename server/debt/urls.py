@@ -6,5 +6,5 @@ router=routers.DefaultRouter()
 router.register(r"member",MemberViewSet)
 
 urlpatterns = [
-    path("member",include(router.urls))
+    path("",include(router.urls))
 ]
