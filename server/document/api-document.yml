@@ -46,6 +46,15 @@ paths:
   /login:
     post:
       summary: "ログイン時の処理を行う"
+      requestBody:
+        description: "Discordの認証後、URLのcode以下を送信する"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: "string"
       responses:
         "200":
           description: "ログインに成功し、Discordからユーザの情報を取得できている"
