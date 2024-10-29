@@ -43,3 +43,23 @@ paths:
                   login_id:
                     type: "string"
                     example: ""
+  /login:
+    post:
+      summary: "ログイン時の処理を行う"
+      responses:
+        "200":
+          description: "ログインに成功し、Discordからユーザの情報を取得できている"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_name:
+                    type: "string"
+                    example: "kotaro"
+                  discord_id:
+                    type: "string"
+                    example: "960825958208765973"
+                  avatar_id:
+                    type: "string"
+                    example: "9776f1de158a59c811cbfe80b4425d74"
