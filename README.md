@@ -2,8 +2,6 @@
 
 - Discord 上で管理していた借金管理を Web 上に移行する
 
-# フロントエンド
-
 ## 画面一覧
 
 - ログイン画面
@@ -49,8 +47,6 @@
     - 今まで貸していた分の一部の返済を確認する
       - 今後表示される金額は、総貸し金額から一部返済した金額を引いた金額となる
 
-# バックエンド
-
 # 開発者用
 
 ## デザイン
@@ -67,9 +63,24 @@ yarn start
 
 ## バックエンド
 
+### 環境構築
+
+```
+docker compose build
+```
+
+```
+docker compose up
+```
+
 ### データベース
 
 - mariadb を使用
+
+### API ドキュメント
+
+`document/api-document.yml`を開いた状態で
+`OpenAPI:show preview using the default renderer`を使用
 
 ### Django SuperUser
 
