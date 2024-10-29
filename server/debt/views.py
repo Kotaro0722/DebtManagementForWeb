@@ -33,12 +33,26 @@ class DiscordLoginView(APIView):
                 "redirect_uri": "http://localhost:3000/dashboard",
             },
         )
-        if response.status_code==200:
-            data=response.json()
-            access_token=data.get("access_token")
-            
-            response=Response({"message":"Logged in successfully"},status=status.HTTP_200_OK)
-            response.set_cookie("access_token",access_token,httponly=True)
-            return response
-        else:
+        if response.status_code!=200:
             return Response({"error":f"Failed to authenticate by {response.json()}"},status=status.HTTP_401_UNAUTHORIZED)
+        
+        login_data=response.json()
+        access_token=login_data.get("access_token")
+        
+        response=requests.get(
+            "https://discordapp.com/api/users/@me",
+            headers={"Authorization":f"Bearer {access_token}"}
+        )
+        if response.status_code!=200:
+            return Response({"error":f"Failed to get your data by {response.json()}"},status=status.HTTP_401_UNAUTHORIZED)
+
+        user_data=response.json()
+        user_info={
+            "user_name":user_data["username"],
+            "discord_id":user_data["id"],
+            "avatar_id":user_data["avatar"]
+        }        
+        response=Response(user_info,status=status.HTTP_200_OK)
+        response.set_cookie("access_token",access_token,httponly=True)
+        return response
+            
