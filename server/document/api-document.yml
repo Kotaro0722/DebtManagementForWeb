@@ -43,18 +43,17 @@ paths:
                   login_id:
                     type: "string"
                     example: ""
-  /login:
-    post:
+  /user_data/{code}:
+    get:
       summary: "ログイン時の処理を行う"
-      requestBody:
-        description: "Discordの認証後、URLのcode以下を送信する"
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                code:
-                  type: "string"
+      description: "Discordの認証後、URLのcodeの値"
+      parameters:
+        - name: "code"
+          in: "path"
+          description: "URLのcodeの値"
+          required: true
+          schema:
+            type: "string"
       responses:
         "200":
           description: "ログインに成功し、Discordからユーザの情報を取得できている"
