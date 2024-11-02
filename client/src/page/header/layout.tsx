@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { SyntheticEvent } from "react";
 import { UserInfoType } from ".";
+import { useNavigate } from "react-router-dom";
 
 type HeaderLayoutProps = {
   value: string;
@@ -25,6 +26,7 @@ export const HeaderLayout = ({
   handleTabChange,
   userInfo,
 }: HeaderLayoutProps) => {
+  const navigate = useNavigate();
   return (
     <AppBar position="static">
       <Toolbar
@@ -67,7 +69,12 @@ export const HeaderLayout = ({
             sx={{ width: "fit-content", color: "black" }}
           />
         </ListItem>
-        <Button sx={{ backgroundColor: "black", color: "white" }}>
+        <Button
+          sx={{ backgroundColor: "black", color: "white" }}
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
           Logout
         </Button>
       </Toolbar>
