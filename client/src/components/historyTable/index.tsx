@@ -21,7 +21,7 @@ import {
 } from "@mui/material";
 import { dateFormatter } from "../../utils/dateFormatter";
 import { useEffect, useState } from "react";
-import { LabelTypography } from "../../newCredit";
+import { LabelTypography } from "../../page/newCredit";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";

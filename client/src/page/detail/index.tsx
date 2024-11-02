@@ -11,9 +11,9 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Amount } from "../components/amount";
-import { theme } from "..";
-import { HistoryListType, HistoryTable } from "../components/historyTable";
+import { Amount } from "../../components/amount";
+import { theme } from "../..";
+import { HistoryListType, HistoryTable } from "../../components/historyTable";
 import { useLocation } from "react-router-dom";
 
 type DetailProps = {

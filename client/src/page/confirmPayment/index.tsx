@@ -13,10 +13,10 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
-import { HistoryListType, HistoryTable } from "../components/historyTable";
+import { HistoryListType, HistoryTable } from "../../components/historyTable";
 import { useEffect, useState } from "react";
-import { Amount } from "../components/amount";
-import { theme } from "..";
+import { Amount } from "../../components/amount";
+import { theme } from "../..";
 
 export const ConfirmPayment = () => {
   const [history, setHistory] = useState<HistoryListType[] | null>(null);

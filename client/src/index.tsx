@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Login } from "./login";
-import { Dashboard } from "./dashboard";
-import { Header } from "./header";
+import { Login } from "./page/login";
+import { Dashboard } from "./page/dashboard";
+import { Header } from "./page/header";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Layout } from "./layout";
-import { Detail } from "./detail";
-import { NewCredit } from "./newCredit";
-import { ConfirmPayment } from "./confirmPayment";
+import { Detail } from "./page/detail";
+import { NewCredit } from "./page/newCredit";
+import { ConfirmPayment } from "./page/confirmPayment";
 
 export const theme = createTheme({
   palette: {

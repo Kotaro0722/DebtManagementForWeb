@@ -1,7 +1,7 @@
 import { Grid2 } from "@mui/material";
-import { Amount } from "../components/amount";
-import { AmountTable, ListType } from "../components/amountTable";
-import { useState } from "react";
+import { Amount } from "../../components/amount";
+import { AmountTable, ListType } from "../../components/amountTable";
+import { useEffect, useState } from "react";
 
 export const Dashboard = () => {
   const [debtList, setDebtList] = useState<ListType[] | null>([
@@ -13,6 +13,12 @@ export const Dashboard = () => {
   ]);
   const [totalList, setTotalList] = useState<ListType[] | null>(null);
   const [creditList, setCreditList] = useState<ListType[] | null>(null);
+
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+
+  useEffect(() => {
+    (async () => {})();
+  }, []);
 
   return (
     <Grid2 container rowSpacing={4} wrap="nowrap" direction="column">
