@@ -17,8 +17,8 @@ class MemberViewSet(viewsets.ModelViewSet):
     serializer_class=MemberSerializers
     
 class DiscordLoginView(APIView):
-    def post(self,request):
-        code = request.data.get("code")
+    def get(self,request):
+        code = request.query_params.get("code")
         if not code:
             return Response({"error":"Code is required."},status=status.HTTP_400_BAD_REQUEST)
         
