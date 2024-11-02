@@ -53,6 +53,5 @@ class DiscordLoginView(APIView):
             "avatar_id":user_data["avatar"]
         }        
         response=Response(user_info,status=status.HTTP_200_OK)
-        response.set_cookie("access_token",access_token,httponly=True)
         return response
             
