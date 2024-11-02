@@ -7,5 +7,5 @@ router.register(r"member",MemberViewSet)
 
 urlpatterns = [
     path("",include(router.urls)),
-    path("login/",DiscordLoginView.as_view(),name="login")
+    path("user_data/",DiscordLoginView.as_view(),name="user_data")
 ]
