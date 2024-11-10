@@ -1,16 +1,22 @@
-import {
-  AppBar,
-  Button,
-  Tab,
-  Tabs,
-  Toolbar,
-  Typography,
-  styled,
-} from "@mui/material";
-import { SyntheticEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { SyntheticEvent, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { HeaderLayout } from "./layout";
+import { paths } from "../../schema/paths";
+
+export type UserInfoType =
+  paths["/user_data/{code}"]["get"]["responses"]["200"]["content"]["application/json"];
 
 export const Header = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const code = queryParams.get("code");
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLogin, setIsLogin] = useState<boolean | null>(null);
+
+  const [userInfo, setUserInfo] = useState<UserInfoType | null>(null);
+
   const [value, setValue] = useState<string>("dashboard");
 
   const navigate = useNavigate();
@@ -20,45 +26,39 @@ export const Header = () => {
     navigate(newValue);
   };
 
+  useEffect(() => {
+    (async () => {
+      if (!code) return;
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_BASE_POINT}/user_data/`,
+          {
+            params: {
+              code,
+            },
+          }
+        );
+        setUserInfo(response.data);
+        setIsLogin(true);
+      } catch (error) {
+        setIsLogin(false);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, [code]);
+
+  useEffect(() => {
+    if (!isLoading && !isLogin) {
+      navigate("/login");
+    }
+  }, [isLogin, isLoading]);
+
   return (
-    <AppBar position="static">
-      <Toolbar
-        sx={{
-          backgroundColor: "white",
-          display: "flex",
-          justifyContent: "space-around",
-        }}
-      >
-        <Typography variant="h6" color="black">
-          Debt Management For Web
-        </Typography>
-        <Tabs
-          value={value}
-          onChange={handleTabChange}
-          textColor="primary"
-          indicatorColor="primary"
-          aria-label="navigation tab"
-        >
-          <NavigationTab value="dashboard" label="Dashboard" disableRipple />
-          <NavigationTab value="debt" label="Debt" disableRipple />
-          <NavigationTab value="total" label="Total" disableRipple />
-          <NavigationTab value="credit" label="Credit" disableRipple />
-          <NavigationTab value="newCredit" label="New Credit" disableRipple />
-          <NavigationTab
-            value="confirmPayment"
-            label="Confirm Payment"
-            disableRipple
-          />
-        </Tabs>
-        <Button sx={{ backgroundColor: "black", color: "white" }}>
-          Logout
-        </Button>
-      </Toolbar>
-    </AppBar>
+    <HeaderLayout
+      value={value}
+      handleTabChange={handleTabChange}
+      userInfo={userInfo}
+    />
   );
 };
-
-const NavigationTab = styled(Tab)(({ theme }) => ({
-  borderBottom: `2px solid ${theme.palette.secondary.main}`,
-  fontWeight: "600",
-}));
