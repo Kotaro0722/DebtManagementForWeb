@@ -31,7 +31,7 @@ export const Header = () => {
       if (!code) return;
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/user_data/`,
+          `${process.env.REACT_APP_API_BASE_POINT}/user_data/`,
           {
             params: {
               code,
