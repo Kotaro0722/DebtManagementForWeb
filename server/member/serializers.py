@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Member
+from ..debt.models import Member
 
 
 class MemberSerializers(serializers.ModelSerializer):

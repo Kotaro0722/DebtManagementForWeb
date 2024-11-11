@@ -1,20 +1,12 @@
 import environ
 import requests
-from rest_framework import status, viewsets
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Member
-from .serializers import MemberSerializers
 
 env = environ.Env()
 env.read_env(".env")
-
-
-# Create your views here.
-class MemberViewSet(viewsets.ModelViewSet):
-    queryset = Member.objects.all()
-    serializer_class = MemberSerializers
 
 
 class DiscordLoginView(APIView):
