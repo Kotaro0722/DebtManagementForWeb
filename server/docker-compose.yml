@@ -12,7 +12,6 @@ services:
       - .:/debt
     depends_on:
       - db
-    restart: always
 
   db:
     image: mariadb:latest

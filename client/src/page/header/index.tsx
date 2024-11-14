@@ -26,27 +26,27 @@ export const Header = () => {
     navigate(newValue);
   };
 
-  useEffect(() => {
-    (async () => {
-      if (!code) return;
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_BASE_POINT}/user_data/`,
-          {
-            params: {
-              code,
-            },
-          }
-        );
-        setUserInfo(response.data);
-        setIsLogin(true);
-      } catch (error) {
-        setIsLogin(false);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
-  }, [code]);
+  // useEffect(() => {
+  //   (async () => {
+  //     if (!code) return;
+  //     try {
+  //       const response = await axios.get(
+  //         `${process.env.REACT_APP_API_BASE_POINT}/debt/user_data/`,
+  //         {
+  //           params: {
+  //             code,
+  //           },
+  //         }
+  //       );
+  //       setUserInfo(response.data);
+  //       setIsLogin(true);
+  //     } catch (error) {
+  //       setIsLogin(false);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   })();
+  // }, [code]);
 
   useEffect(() => {
     if (!isLoading && !isLogin) {

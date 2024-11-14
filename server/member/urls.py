@@ -1,11 +1,12 @@
 from django.urls import include, path
 from rest_framework import routers
 
-from .views import DiscordLoginView
+from .views import MemberCheckView
+
 
 router = routers.DefaultRouter()
 
 urlpatterns = [
     path("", include(router.urls)),
-    path("user_data/", DiscordLoginView.as_view(), name="user_data"),
+    path("check/", MemberCheckView.as_view(), name="check")
 ]
